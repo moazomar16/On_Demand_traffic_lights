@@ -65,6 +65,16 @@
 #define OCR2  *((vuint8_t *) 0x43)
 
 
+/************************************************************************/
+/*Interrupt Registers                                                   */
+/************************************************************************/
+
+
+#define GICR    *((vuint8_t *) 0x5B)  // General interrupt control register 
+#define GIFR    *((vuint8_t *) 0x5A)  // General interrupt flag register 
+#define MCUCR   *((vuint8_t *) 0x55)  // MCU control register 
+#define MCUCSR  *((vuint8_t *) 0x54)  // MCU control and status register 
+
 
 
 
