@@ -21,5 +21,8 @@ void LED_toggle(uint8_t LedPin_Number, uint8_t LedPort_Number){
 	DIO_toggle(LedPin_Number,LedPort_Number);
 }
 void LED_blink(uint8_t LedPin_Number, uint8_t LedPort_Number){
-	
+	DIO_toggle(LedPin_Number,LedPort_Number);
+	Timer_delay(0.5);
+	DIO_toggle(LedPin_Number,LedPort_Number);
+	Timer_delay(0.5);
 }

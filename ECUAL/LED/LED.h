@@ -10,6 +10,7 @@
 #define LED_H_
 
 #include "../../MCAL/DIO_Driver/DIO.h"
+#include "../../MCAL/Timer_Driver/Timer.h"
 
 // APIs
 void LED_init(uint8_t LedPin_Number, uint8_t LedPort_Number);
