@@ -15,31 +15,30 @@ void TimerNormal_init(){
 	TCNT0 = 0x00; // initial value 
 }
 void Timer_delay(float delay){
-	float Ttick,Tmaxdelay;
+	double Ttick,Tmaxdelay,Noverflows;
 	uint8_t Tinit;
-	uint16_t Noverflows,overflowcounter=0;
-	Ttick = PRESCALER/1000000;
+	uint16_t overflowcounter=0;
+	Ttick = PRESCALER/1000000.0;
 	Tmaxdelay = 256 * Ttick;
-	Noverflows = (ceil)(delay)/(Tmaxdelay);
+	Noverflows = ceil(delay/Tmaxdelay);
 	Tinit = ceil(256 - ((delay/Ttick)/Noverflows));
+	
 	TCNT0 = Tinit;
 	switch(PRESCALER){
 		case 1:
-			TCCR0 |= 1<<0;
+			TCCR0 |= ((uint8_t)(1<<0));
 			break;
 		case 8:
-			TCCR0 |= 1<<1;
+			TCCR0 |= ((uint8_t)(1<<1));
 			break;
 		case 64:
-			TCCR0 |= 1<<0;
-			TCCR0 |= 1<<1;
+			TCCR0 |= ((uint8_t)(0x03));
 			break;	
 		case 256:
-			TCCR0 |= 1<<2;
+			TCCR0 |= ((uint8_t)(0x04));
 			break;
 		case 1024:
-			TCCR0 |= 1<<0;
-			TCCR0 |= 1<<2;
+			TCCR0 |= ((uint8_t)(0x05));
 			break;
 	}
 	while(overflowcounter < Noverflows){
@@ -57,19 +56,4 @@ void Timer_start(uint8_t prescaler){
 }
 void Timer_off(){
 	TCNT0 = 0x00;
-}
-
-void Timer_delay1(){
-	TCNT0 = 0xc;
-	uint16_t overflowcounter,Noverflows;
-	overflowcounter=0;
-	Noverflows=4;
-	TCCR0 |= 1<<0;
-	TCCR0 |= 1<<2;
-	while(overflowcounter < Noverflows){
-		while ((TIFR &(1<<0)) == 0);
-		TIFR |=1<<0;
-		overflowcounter++;
-	}
-	TCNT0=0x00;
 }
