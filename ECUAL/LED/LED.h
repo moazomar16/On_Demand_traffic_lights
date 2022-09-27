@@ -17,7 +17,8 @@ void LED_init(uint8_t LedPin_Number, uint8_t LedPort_Number);
 void LED_on(uint8_t LedPin_Number, uint8_t LedPort_Number);
 void LED_off(uint8_t LedPin_Number, uint8_t LedPort_Number);
 void LED_toggle(uint8_t LedPin_Number, uint8_t LedPort_Number);
-void LED_blink(uint8_t LedPin_Number, uint8_t LedPort_Number);
+void LED_blink(uint8_t LedPin_Number, uint8_t LedPort_Number,uint8_t delay);
+void LED_blink_2leds(uint8_t LedPin_Number1, uint8_t LedPort_Number1,uint8_t LedPin_Number2, uint8_t LedPort_Number2,uint8_t delay);
 
 
 
