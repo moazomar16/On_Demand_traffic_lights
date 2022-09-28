@@ -11,6 +11,7 @@
 Traffic_State Cars={0,0};
 // Select mode
 uint8_t RUNNING_MODE =NormalMode; 
+
 App_init(){
 	
 	// Cars led
@@ -98,9 +99,9 @@ App_Start(){
 				}
 				LED_off(0,PORT_A);  // cars red off
 				LED_off(2,PORT_B);  // pedestrian green off
-				LED_blink_2leds(1,PORT_A,1,PORT_B,5); // blink both yellow lights on and off
+				LED_blink_2leds(1,PORT_A,1,PORT_B,5); // blink both yellow lights on and off 
 				LED_on(2,PORT_A);   //cars green on
-				LED_on(0,PORT_B);	// pedestrian red on 
+				LED_on(0,PORT_B);	// pedestrian red on  implementation
 				Timer_delay(5);
 				LED_off(2,PORT_A);
 				Cars.LED_State=GREEN;

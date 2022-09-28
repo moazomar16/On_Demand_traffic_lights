@@ -34,10 +34,6 @@ typedef struct Traffic_State
 
 
 
-// Number of led s
-#define CarsLED 3
-#define PedestrianLED 3
-
 // APIs
 void App_init();
 void App_Start();
